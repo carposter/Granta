@@ -1,45 +1,42 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>carposterrs - Maşın Posterləri🛍️</title>
+<title>CarPosterrs</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-    color: white;
-    min-height: 100vh;
+    color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-/* ================= INSTAGRAM CARD ================= */
+/* Instagram Card */
 .instagram-card {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 15px;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     padding: 15px 25px;
     border-radius: 20px;
-    max-width: 600px;
-    margin: 30px auto 10px auto;
+    margin-bottom: 25px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: 0.3s ease;
-    width: 85%;
 }
 
 .instagram-card:hover {
-    transform: scale(1.03);
-    border-color: #d62976;
+    transform: scale(1.05);
 }
 
+/* Profile Image */
 .instagram-card img {
     width: 60px;
     height: 60px;
@@ -48,12 +45,15 @@ body {
     border: 3px solid #d62976;
 }
 
+/* Username */
 .username {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
+/* Follow Button */
 .follow-btn {
+    margin-left: 15px;
     padding: 8px 18px;
     border-radius: 30px;
     background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
@@ -66,163 +66,25 @@ body {
 }
 
 .follow-btn:hover {
-    opacity: 0.9;
-    transform: scale(1.05);
+    opacity: 0.8;
 }
 
-/* ================= GRID (GALLERY) ================= */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.gallery-item {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background: #000;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    object-fit: contain;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(214, 41, 118, 0.3);
-}
-
-/* Gird daxilindəki balaca video ikonası */
-.video-wrapper {
-    position: relative;
-}
-
-.video-wrapper::after {
-    content: '▶';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    background: rgba(214, 41, 118, 0.8);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    padding-left: 4px;
-    box-sizing: border-box;
-    pointer-events: none;
-    transition: 0.3s;
-}
-
-.video-wrapper:hover::after {
-    background: #d62976;
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-/* ================= LIGHTBOX (SLIDER) ================= */
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.97);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.lightbox-content {
-    max-width: 90%;
-    max-height: 80%;
-    border-radius: 10px;
-    display: none;
-}
-
-/* Şəkil və ya video aktiv olduqda görünməsi üçün */
-.lightbox-content.active {
-    display: block;
-}
-
-/* Slayder daxilindəki video container */
-video.lightbox-content {
-    width: 100%;
+/* Video */
+.video-container {
+    width: 90%;
     max-width: 800px;
-    outline: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
 }
 
-.close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
-    cursor: pointer;
-    color: #bbb;
-    transition: 0.3s;
-}
-
-.close:hover {
-    color: white;
-}
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 50px;
-    cursor: pointer;
-    padding: 15px;
-    user-select: none;
-    color: #888;
-    transition: 0.3s;
-}
-
-.arrow:hover {
-    color: white;
-}
-
-.prev { left: 30px; }
-.next { right: 30px; }
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:600px){
-    .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        padding: 15px;
-        gap: 12px;
-    }
-
-    .instagram-card {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-
-    .follow-btn {
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    .arrow {
-        font-size: 35px;
-    }
-    .prev { left: 10px; }
-    .next { right: 10px; }
+video {
+    width: 100%;
+    display: block;
 }
 </style>
 </head>
+
 <body>
 
 <div class="instagram-card">
@@ -236,109 +98,11 @@ video.lightbox-content {
     </a>
 </div>
 
-<div class="gallery">
-    <img class="gallery-item" src="1.PNG" onclick="openLightbox(0)">
-    <img class="gallery-item" src="2.PNG" onclick="openLightbox(1)">
-    <img class="gallery-item" src="3.PNG" onclick="openLightbox(2)">
-    <img class="gallery-item" src="4.PNG" onclick="openLightbox(3)">
-    <img class="gallery-item" src="5.PNG" onclick="openLightbox(4)">
-    <img class="gallery-item" src="6.PNG" onclick="openLightbox(5)">
-    <img class="gallery-item" src="7.PNG" onclick="openLightbox(6)">
-    
-    <div class="video-wrapper" onclick="openLightbox(7)">
-        <img class="gallery-item" src="poster.png" alt="Video Poster">
-    </div>
-</div>
-
-<div class="lightbox" id="lightbox">
-    <span class="close" onclick="closeLightbox()">&times;</span>
-    <span class="arrow prev" onclick="changeSlide(-1)">&#10094;</span>
-    
-    <img id="lightbox-img" class="lightbox-content" src="">
-    
-    <video id="lightbox-video" class="lightbox-content" controls>
+<div class="video-container">
+    <video controls poster="poster.jpg">
         <source src="video.mp4" type="video/mp4">
-        Brauzeriniz bu videonu dəstəkləmir.
     </video>
-    
-    <span class="arrow next" onclick="changeSlide(1)">&#10095;</span>
 </div>
-
-<script>
-let currentIndex = 0;
-
-// Media massivi: növünü (type) və mənbəyini (src) qeyd edirik
-const mediaList = [
-    { type: "image", src: "1.PNG" },
-    { type: "image", src: "2.PNG" },
-    { type: "image", src: "3.PNG" },
-    { type: "image", src: "4.PNG" },
-    { type: "image", src: "5.PNG" },
-    { type: "image", src: "6.PNG" },
-    { type: "image", src: "7.PNG" },
-    { type: "video", src: "video.mp4" } // Ən axırda gələn video
-];
-
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxVideo = document.getElementById("lightbox-video");
-
-function openLightbox(index) {
-    currentIndex = index;
-    lightbox.style.display = "flex";
-    updateLightboxContent();
-}
-
-function closeLightbox() {
-    lightbox.style.display = "none";
-    lightboxVideo.pause(); // Lightbox bağlananda videonu dayandırır
-}
-
-function changeSlide(direction) {
-    currentIndex += direction;
-
-    // Dövrü tənzimləmə (Başa və ya axıra qayıtmaq üçün)
-    if (currentIndex < 0) {
-        currentIndex = mediaList.length - 1;
-    }
-    if (currentIndex >= mediaList.length) {
-        currentIndex = 0;
-    }
-
-    updateLightboxContent();
-}
-
-function updateLightboxContent() {
-    const currentMedia = mediaList[currentIndex];
-    
-    // Hər dəfə keçid edəndə videonu dayandırırıq ki, arxada səs qalmasın
-    lightboxVideo.pause();
-
-    if (currentMedia.type === "image") {
-        // Əgər şəkildirsə, videonu gizlət, şəkli göstər
-        lightboxVideo.classList.remove("active");
-        lightboxImg.src = currentMedia.src;
-        lightboxImg.classList.add("active");
-    } else if (currentMedia.type === "video") {
-        // Əgər videodursa, şəkli gizlət, videonu göstər
-        lightboxImg.classList.remove("active");
-        lightboxVideo.classList.add("active");
-        lightboxVideo.load(); // Videonu yenidən yükləyir ki, sıfırdan başlasın
-    }
-}
-
-// ESC düyməsi basılanda bağlanması üçün
-document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") {
-        closeLightbox();
-    }
-    // Klaviatura oxları ilə idarəetmə (UX üçün əla detaldır)
-    if (lightbox.style.display === "flex") {
-        if (e.key === "ArrowRight") changeSlide(1);
-        if (e.key === "ArrowLeft") changeSlide(-1);
-    }
-});
-</script>
 
 </body>
 </html>
